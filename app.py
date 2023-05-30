@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 import random
 import csv
 import os
+from datetime import datetime
 from botRespond import getResponse
 
 app = Flask(__name__)
@@ -26,9 +27,11 @@ def get_bot_response():
     if botReply == "IDKresponse":
         botReply = str(getResponse('IDKnull')) ##Send the i don't know code back to the DB
     elif botReply == "getTIME":
-        botReply = "getTime()"
+        # botReply = "getTime()"
+        botReply = datetime.now().strftime("It's already %H:%M:%S")
     elif botReply == "getDATE":
-        botReply = "getDate()"
+        botReply = datetime.now().strftime("The Date is %Y-%m-%d ")
+        #botReply = "getDate()"
     ##Log to CSV file
     print("Logging to CSV file now")
     with open('data/log.csv', 'a', newline='') as logFile:
