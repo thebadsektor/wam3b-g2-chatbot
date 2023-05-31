@@ -23,6 +23,12 @@
             max-width: 35rem;
             width: 100%;
             height: 90%;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
 
         .card-body {
@@ -30,6 +36,22 @@
             height: calc(100% - 2.5rem - 2.5rem);
             /* subtract the heights of the header and footer */
         }
+
+        .card-body::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+        }
+
+        .card-body::-webkit-scrollbar {
+            width: 5px;
+            background-color: #F5F5F5;
+        }
+
+        .card-body::-webkit-scrollbar-thumb {
+            background-color: #000000;
+            border: 1px solid #555555;
+        }
+
 
         .chat-response-wrapper {
             border-radius: 5px;
@@ -99,7 +121,8 @@ s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.
         </g>
     </svg>
     <!-- End SVG BG -->
-    <h1 style="position: absolute; z-index: 1000; top: 1rem; left: 1rem; color: #FFF;">Student HandBook</h1>
+    <h1 style="position: absolute; z-index: 1000; top: 1rem; left: 1rem; color: #FFF;">Student
+        HandBook</h1>
     <div class="container-fluid card-container p-10">
         <img src="../static/Chat bot-amico.png" alt="" style=" z-index: 10000;">
         <div class="card">
@@ -134,20 +157,20 @@ s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.
         $('#chat-input').keypress(function (e) {
             if (e.which == 13) {
                 var text = $('#chat-input').val();
-            rawText = text;
-            $('.chatbox').append('<div class="chat-response-wrapper border border-success" style="text-align:right;"><p> <span class="font-weight-bold">Student </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">'+time+'</span></p><p>' + text + '</p></div>');
-            $('#chat-input').val('');
+                rawText = text;
+                $('.chatbox').append('<div class="bg-white chat-response-wrapper border border-success" style="text-align:right;"><p> <span class="font-weight-bold">Student </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">' + time + '</span></p><p>' + text + '</p></div>');
+                $('#chat-input').val('');
 
-            // Scroll to the bottom
-            get_response();
-            $('.chatbox').scrollTop($('.chatbox')[0].scrollHeight);
+                // Scroll to the bottom
+                get_response();
+                $('.chatbox').scrollTop($('.chatbox')[0].scrollHeight);
             }
         });
 
         $('#send-btn').click(function () {
             var text = $('#chat-input').val();
             rawText = text;
-            $('.chatbox').append('<div class="chat-response-wrapper border border-success" style="text-align:right;"><p> <span class="font-weight-bold">Student </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">'+time+'</span></p><p>' + text + '</p></div>');
+            $('.chatbox').append('<div class="bg-white chat-response-wrapper border border-success" style="text-align:right;"><p> <span class="font-weight-bold">Student </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">' + time + '</span></p><p>' + text + '</p></div>');
             $('#chat-input').val('');
 
             // Scroll to the bottom
@@ -157,7 +180,7 @@ s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.
 
         function bot_greet(firstText) {
             $.get("/get", { msg: firstText }).done(function (data) {
-                var botHtml = '<div class="chat-response-wrapper border border-primary"><p> <span class="font-weight-bold"> AchimBOT </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">'+time+'</span></p><p>' + data + '</p></div>';
+                var botHtml = '<div class="bg-white chat-response-wrapper border border-primary"><p> <span class="font-weight-bold"> AchimBOT </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">' + time + '</span></p><p>' + data + '</p></div>';
                 $("#chatbox").append(botHtml);
             });
         }
@@ -165,7 +188,7 @@ s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.
         function get_response() {
             $.get("/get", { msg: rawText }).done(function (data) {
                 console.log(rawText);
-                var botHtml = '<div class="chat-response-wrapper border border-primary"><p> <span class="font-weight-bold"> AchimBOT </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">'+time+'</span></p><p>' + data + '</p></div>';
+                var botHtml = '<div class="bg-white chat-response-wrapper border border-primary"><p> <span class="font-weight-bold"> AchimBOT </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">' + time + '</span></p><p>' + data + '</p></div>';
                 $("#chatbox").append(botHtml);
             });
         }
