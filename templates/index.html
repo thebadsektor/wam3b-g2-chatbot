@@ -84,6 +84,17 @@
             background-color: #0e4166;
             background-image: linear-gradient(to bottom, rgba(14, 65, 102, 0.86), #0e4166);
         }
+
+        @media screen and (max-width: 768px) {
+            .chatbot-img {
+                display: none;
+            }
+
+            .card {
+                height: 70%;
+                margin-right: 0;
+            }
+        }
     </style>
 
     <title>Student HandBook</title>
@@ -124,7 +135,7 @@ s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.
     <h1 style="position: absolute; z-index: 1000; top: 1rem; left: 1rem; color: #FFF;">Student
         HandBook</h1>
     <div class="container-fluid card-container p-10">
-        <img src="../static/Chat bot-amico.png" alt="" style=" z-index: 10000;">
+        <img src="../static/Chat bot-amico.png" alt="" class="chatbot-img" style=" z-index: 10000;">
         <div class="card">
             <div class="card-header font-weight-bold">
                 AchimBot
@@ -158,7 +169,7 @@ s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.
             if (e.which == 13) {
                 var text = $('#chat-input').val();
                 rawText = text;
-                $('.chatbox').append('<div class="bg-white chat-response-wrapper border border-success" style="text-align:right;"><p> <span class="font-weight-bold">Student </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">' + time + '</span></p><p>' + text + '</p></div>');
+                $('.chatbox').append('<div class="bg-white chat-response-wrapper border border-success" style="text-align:right; ">Student </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">' + time + '</span></p><p>' + text + '</p></div>');
                 $('#chat-input').val('');
 
                 // Scroll to the bottom
@@ -170,7 +181,7 @@ s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.
         $('#send-btn').click(function () {
             var text = $('#chat-input').val();
             rawText = text;
-            $('.chatbox').append('<div class="bg-white chat-response-wrapper border border-success" style="text-align:right;"><p> <span class="font-weight-bold">Student </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">' + time + '</span></p><p>' + text + '</p></div>');
+            $('.chatbox').append('<div class="bg-white chat-response-wrapper border border-success" style="text-align:right; ">Student </span> <span class="text-sm text-secondary" style="font-size: 0.60rem">' + time + '</span></p><p>' + text + '</p></div>');
             $('#chat-input').val('');
 
             // Scroll to the bottom
